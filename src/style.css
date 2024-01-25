@@ -1,22 +1,38 @@
+:root {
+    --background: linear-gradient(10deg, #5d9ce5, #0083ff)
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-size: 16px;
     text-decoration: none !important;
+    font-family: "Roboto Light";
+}
+
+.loader {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12rem;
+    color: white;
+    background: linear-gradient(to bottom right, #0000 calc(50% - 40px), #fff 50%, #0000 calc(50% + 40px)) bottom right/calc(200% + 80px) calc(200% + 80px) #0083ff;
+    animation: l8 1s infinite;
 }
 
 .searchbar {
     width: 98%;
     height: 100px;
     padding: 15px 30px;
-    background: linear-gradient(180deg, #5d9ce5, #0083ff);
     border-radius: 20px;
-    margin: 15px auto;
-
+    margin: 15px auto 20px auto;
+    background: var(--background);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 10px 10px 10px #c7c7c7;
 }
 
 .searchbar .logo {
@@ -29,6 +45,17 @@
 
 .searchbar .logo img {
     width: 100%;
+    animation: mymove 12s infinite;
+}
+
+@keyframes mymove {
+    from {
+        rotate: 0;
+    }
+    to {
+        rotate: 360deg;
+    }
+
 }
 
 .searchbar .logo h3 {
@@ -62,13 +89,194 @@
     background: white;
 }
 
+.searchbar .search button:hover {
+    cursor: pointer;
+}
+
 /*main sec*/
 
+.container {
+    display: flex;
+    margin: 15px 1%;
+    gap: 20px;
+}
+
 .main-sec {
-    width: 98%;
-    height: 100vh;
+    width: calc(98% - 50%); /*98*/
+    height: 40vh;
     padding: 15px 30px;
     background: linear-gradient(180deg, #5d9ce5, #0083ff);
     border-radius: 20px;
-    margin: 15px auto;
+
+    display: flex;
+    box-shadow: 10px 10px 10px #c7c7c7;
+}
+
+.main-sec .left-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-sec .left-side h1 {
+    color: white;
+    font-size: 4.5rem;
+}
+
+.main-sec .left-side h2 {
+    color: white;
+    font-size: 4.5rem;
+    margin: 12px 0 1px 0;
+}
+
+.main-sec .left-side p {
+    color: white;
+    font-size: 2.2rem;
+}
+
+.main-sec .left-side {
+    width: 50%;
+}
+
+.main-sec .right-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-sec .right-side img {
+    height: 65%;
+    margin-bottom: 10px;
+}
+
+.main-sec .right-side .right-bottom {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-sec .right-side .right-bottom h1 {
+    color: white;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+}
+
+.humidity, .wind {
+    width: 25%; /*98*/
+    height: 40vh;
+    padding: 15px 30px;
+    background: linear-gradient(180deg, #5d9ce5, #0083ff);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 10px #c7c7c7;
+}
+
+.humidity img, .wind img {
+    width: 20%;
+}
+
+.humidity h1, .wind h1 {
+    color: white;
+    font-size: 4.5rem;
+    margin: 10px 0 20px 0;
+}
+
+.humidity h2, .wind h2 {
+    color: white;
+    font-size: 3.8rem;
+}
+
+/*second*/
+
+.container2 {
+    display: flex;
+    margin: 15px 1%;
+}
+
+.mini {
+    width: 20%; /*98*/
+    height: 40vh;
+    display: grid;
+    row-gap: 20px;
+    color: white;
+}
+
+.mini .col {
+    width: 95%;
+    height: 19vh;
+    padding: 15px 30px;
+    box-shadow: 10px 10px 10px #c7c7c7;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #5d9ce5, #0083ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini .col h1 {
+    margin: 10px 0 15px 0;
+    font-size: 1.5rem;
+}
+.mini .col h2 {
+    font-size: 1.3rem;
+}
+
+.mini .col img {
+    width: 50%;
+}
+
+.second {
+    width: 75%; /*98*/
+    height: 40vh;
+    padding: 15px 30px;
+    background: linear-gradient(180deg, #5d9ce5, #0083ff);
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px #c7c7c7;
+    display: flex;
+    flex-direction: column;
+}
+
+.second h1 {
+    color: white;
+    font-size: 2rem;
+    margin: 5px 0 30px 0;
+}
+
+.items {
+
+}
+
+.item {
+    text-align: center;
+    padding: 15px;
+}
+
+.item p {
+    color: white;
+    font-size: 1.5rem;
+
+}
+
+.item img {
+    margin: 20px auto;
+}
+
+/* HTML: <div class="loader"></div> */
+
+
+@keyframes l8 {
+    100% {
+        background-position: top left
+    }
 }

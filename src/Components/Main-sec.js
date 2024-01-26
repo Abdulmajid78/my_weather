@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import {Clock} from "./Clock";
 
 
 class MainSec extends Component {
     render() {
-        const {weather} = this.props
+        const {weather, localTime} = this.props
         // console.log(weather)
+
         return (
             <div className="container">
                 <div className="main-sec">
@@ -34,15 +36,21 @@ class MainSec extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="humidity">
-                    <img src="/assets/images/humid.png" alt=""/>
-                    <h1>Humidity</h1>
-                    <h2>{weather?.main?.humidity ? weather?.main?.humidity : 0}%</h2>
+                <div className="clock">
+                    <Clock/>
+                    {/*<p>{Date(localTime)}</p>*/}
                 </div>
-                <div className="wind">
-                    <img src="/assets/images/wind.png" alt=""/>
-                    <h1>Wind</h1>
-                    <h2>{weather?.wind?.speed ? Math.round(weather?.wind?.speed) : 0}km/h</h2>
+                <div className='cols'>
+                    <div className="humidity">
+                        <img src="/assets/images/humid.png" alt=""/>
+                        <h1>Humidity</h1>
+                        <h2>{weather?.main?.humidity ? weather?.main?.humidity : 0}%</h2>
+                    </div>
+                    <div className="humidity">
+                        <img src="/assets/images/wind.png" alt=""/>
+                        <h1>Wind</h1>
+                        <h2>{weather?.wind?.speed ? Math.round(weather?.wind?.speed) : 0}km/h</h2>
+                    </div>
                 </div>
             </div>
         );

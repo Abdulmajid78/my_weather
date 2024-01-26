@@ -44,33 +44,32 @@ class Second extends Component {
 
     render() {
         const {Slider, weather, suntime} = this.props
+        console.log(weather)
         return (
 
             <div className='container2'>
-                <div className="mini">
-                    <div className="col">
-                        <img src="/assets/images/sun_rise.png" alt=""/>
-                        <h1>Sunrise</h1>
-                        <h2>{(suntime?.results?.sunrise)?.substring(0,4)} A.M</h2>
-                    </div>
-                    <div className="col">
-                        <img src="/assets/images/sun_set.png" alt=""/>
-                        <h1>Sunset</h1>
-                        <h2>{(suntime?.results?.sunset)?.substring(0,4)} P.M</h2>
-                    </div>
-                </div>
-                <div className="mini">
-                    <div className="col">
-                        <img src="/assets/images/visibility.png" alt=""/>
-                        <h1>Visibility</h1>
-                        <h2>{weather?.visibility/1000}M</h2>
-                    </div>
-                    <div className="col">
-                        <img src="/assets/images/presure.png" alt=""/>
-                        <h1>Pressure</h1>
-                        <h2></h2>
-                        <h2>{(weather?.main?.pressure*0.02953).toPrecision(4)} inHg</h2>
-                    </div>
+                <div className="first">
+                        <div className="col">
+                            <img src="/assets/images/sun_rise.png" alt=""/>
+                            <h1>Sunrise</h1>
+                            <h2>{(suntime?.results?.sunrise)?.substring(0, 4)} A.M</h2>
+                        </div>
+                        <div className="col">
+                            <img src="/assets/images/sun_set.png" alt=""/>
+                            <h1>Sunset</h1>
+                            <h2>{(suntime?.results?.sunset)?.substring(0, 4)} P.M</h2>
+                        </div>
+                        <div className="col">
+                            <img src="/assets/images/visibility.png" alt=""/>
+                            <h1>Visibility</h1>
+                            <h2>{weather?.visibility / 1000}M</h2>
+                        </div>
+                        <div className="col">
+                            <img src="/assets/images/presure.png" alt=""/>
+                            <h1>Pressure</h1>
+                            <h2></h2>
+                            <h2>{(weather?.main?.pressure * 0.02953).toPrecision(4)} inHg</h2>
+                        </div>
                 </div>
                 <div className="second">
                     <h1>Hourly forecast</h1>

@@ -19,6 +19,7 @@ class App extends Component {
     state = {
         weather: {},
         suntime: {},
+        localTime: '',
         loader: true
     };
 
@@ -29,12 +30,14 @@ class App extends Component {
         axios.get(url)
             .then((response) => {
                 const {coord} = response.data; // Extracting coordinates from weather data
-
+                const currentUTC = Date.now();
+                const localTime = new Date(currentUTC + response.data.timezone);
                 // Updating sun_url with lat and lon
                 const sun_url = `https://api.sunrisesunset.io/json?lat=${coord.lat}&lng=${coord.lon}`;
 
                 this.setState({
                     loader: false,
+                    localTime: localTime,
                     weather: response.data,
                 });
 
@@ -105,14 +108,18 @@ class App extends Component {
         axios.get(url)
             .then((response) => {
                 const {coord} = response.data; // Extracting coordinates from weather data
+
+                const currentUTC = Date.now();
+                const localTime = new Date(currentUTC + response.data.timezone);
+
                 // Updating sun_url with lat and lon
                 const sun_url = `https://api.sunrisesunset.io/json?lat=${coord.lat}&lng=${coord.lon}`;
 
                 this.setState({
                     weather: response.data,
+                    localTime: localTime,
                     loader: false,
                 });
-
                 // Fetching sunrise and sunset data with updated sun_url
                 axios.get(sun_url)
                     .then((sunResponse) => {
@@ -131,13 +138,14 @@ class App extends Component {
     }
 
     render() {
-        const {weather, loader, map_url, suntime} = this.state
+        console.log(this.state.localTime)
+        const {weather, loader, map_url, suntime, localTime} = this.state
         return (
             <div>
                 {loader ? <Loader/> :
                     <>
                         <Searchbar searchInput={this.searchInput} searchCity={this.searchCity}/>
-                        <MainSec weather={weather} map_url={map_url} loader={loader}/>
+                        <MainSec weather={weather} map_url={map_url} localTime={localTime}/>
                         <Second weather={weather} Slider={Slider} suntime={suntime}/>
                     </>}
 

@@ -1,21 +1,24 @@
-import React, {Component, createRef} from 'react';
-
+import React, {Component} from 'react';
 
 class Searchbar extends Component {
+    state = {
+        inputVal: ''
+    };
 
-    // state = {
-    //     inputVal: ''
-    // }
-    // handleChange = (e) => {
-    //     this.setState({
-    //         inputVal: e.target.value
-    //     })
-    // }
+    handleChange = (e) => {
+        this.setState({
+            inputVal: e.target.value
+        });
+    };
 
-
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            this.props.searchCity();
+        }
+    };
 
     render() {
-        const {searchCity,searchInput} = this.props
+        const {searchCity, searchInput} = this.props;
         return (
             <div className="searchbar">
                 <div className="logo">
@@ -24,14 +27,18 @@ class Searchbar extends Component {
                 </div>
 
                 <div className="search">
-                    <input type="search"
-                           ref={searchInput}
-                        // onChange={this.handleChange}
-                           placeholder="search city"/>
-                    <button onClick={searchCity}><img width='27' src="/assets/images/search.png" alt=""/></button>
+                    <input
+                        type="search"
+                        ref={searchInput}
+                        onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress} // Add this line
+                        placeholder="search city"
+                    />
+                    <button onClick={searchCity}>
+                        <img width="27" src="/assets/images/search.png" alt=""/>
+                    </button>
                 </div>
             </div>
-
         );
     }
 }
